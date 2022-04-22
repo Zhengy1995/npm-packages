@@ -30,6 +30,6 @@ const MyComponent = () => {
 }
 
 const App = () => {
-	retutn <KeepScope><MyComponent></KeepScope>	
+	retutn <KeepScope><MyComponent /></KeepScope>	
 }
 ```
