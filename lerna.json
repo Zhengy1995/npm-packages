@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "bootsrap": {
+      "hoist": true
+    },
+    "run": {
+      "npmClient": "yarn",
+      "stream": true
+    }
+  },
+  "version": "0.0.0"
+}

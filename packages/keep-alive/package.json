@@ -1,0 +1,25 @@
+{
+  "name": "react-keep-alive",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Zhengy1995/react-keep-alive",
+  "author": "https://github.com/Zhengy1995",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^2.70.2"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.2.170",
+    "@types/react": "^18.0.6",
+    "@types/react-dom": "^18.0.2",
+    "less": "^4.1.2",
+    "postcss": "^8.4.12",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-swc": "^0.2.1"
+  }
+}
