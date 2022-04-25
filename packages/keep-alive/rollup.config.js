@@ -1,9 +1,10 @@
 import swc from 'rollup-plugin-swc'
 import postcss from 'rollup-plugin-postcss'
-export default {
+import dts from 'rollup-plugin-dts'
+export default [{
     input: 'src/index.tsx',
     output: {
-        file: 'dist/bundle.js',
+        file: 'dist/es/index.js',
         format: 'es',
     },
     plugins: [
@@ -37,4 +38,11 @@ export default {
         })
     ],
     external: ['react', 'react-dom']
-}
+}, {
+	input: 'src/index.tsx',
+	output: {
+		file: 'dist/index.d.ts',
+		format: 'es'
+	},
+	plugins: [dts()]
+}]
