@@ -15,6 +15,7 @@ import style from './index.module.less'
 
 type KeepAlivePropsT = {
   id: string
+  className?: string
 }
 
 const Context = createContext<{
@@ -63,7 +64,7 @@ export const KeepScope = ({children}: PropsWithChildren<unknown>) => {
   )
 }
 
-export const KeepAlive = ({children, id}: PropsWithChildren<KeepAlivePropsT>) => {
+export const KeepAlive = ({children, id, className}: PropsWithChildren<KeepAlivePropsT>) => {
   const {render, onRender} = useContext(Context)!
   const div = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -78,5 +79,5 @@ export const KeepAlive = ({children, id}: PropsWithChildren<KeepAlivePropsT>) =>
       document.getElementById(`cache_${id}`)?.append(...Array.from(div.current?.childNodes ?? []))
     }
   })
-  return <div ref={div}></div>
+  return <div ref={div} className={className}></div>
 }
