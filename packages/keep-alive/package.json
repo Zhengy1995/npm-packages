@@ -1,8 +1,9 @@
 {
   "name": "@ronin-react/react-keep-alive",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/es/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "repository": "https://github.com/Zhengy1995/react-keep-alive",
   "author": "https://github.com/Zhengy1995",
   "license": "MIT",
