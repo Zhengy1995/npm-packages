@@ -11,8 +11,10 @@ export const useBeforeFirstMount = (handler: () => void) => {
 }
 
 export const useAfterFirstMount = (handler: () => void) => {
+    const hasMount = useRef(false)
     useEffect(() => {
-        handler()
+        if(!hasMount.current) handler()
+        hasMount.current = true
     }, [])
 }
 
