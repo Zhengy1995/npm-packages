@@ -1,6 +1,6 @@
 {
   "name": "@ronin-react/react-keep-alive",
-  "version": "1.0.3",
+  "version": "1.0.9",
   "main": "dist/es/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,10 +12,6 @@
   "scripts": {
     "build": "rm -rf dist & rollup --config"
   },
-  "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
   "devDependencies": {
     "@swc/core": "^1.2.170",
     "@types/react": "^18.0.6",
@@ -26,6 +22,8 @@
     "eslint-plugin-react-hooks": "^4.4.0",
     "less": "^4.1.2",
     "postcss": "^8.4.12",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "rollup": "^2.70.2",
     "rollup-plugin-dts": "^4.2.1",
     "rollup-plugin-extensions": "^0.1.0",

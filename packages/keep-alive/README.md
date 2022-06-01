@@ -33,3 +33,15 @@ const App = () => {
 	retutn <KeepScope><MyComponent /></KeepScope>	
 }
 ```
+
+### hook
+#### useRefreshModule: (modulename: string) => () => void
+
+```tsx
+import {useRefreshModule} from '@ronin-react/react-keep-alive'
+
+const MyComponent = () => {
+	const fresh = useRefreshModule('otherModule')
+	return <div onClick={fresh}></div>
+}
+```

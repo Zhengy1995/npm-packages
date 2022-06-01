@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useRef } from "react"
 
 export const useBeforeFirstMount = (handler: () => void) => {
-    const hasMount = useRef(false)
-    if(!hasMount.current) {
+    const hasExcute = useRef(false)
+    if(!hasExcute.current) {
+        hasExcute.current = true
         handler()
     }
-    useEffect(() => {
-        hasMount.current = true
-    }, [])
 }
 
-export const useAfterFirstMount = (handler: () => void) => {
+export const useAfterFirstMount = (handler: () => void | (() => void)) => {
     const hasMount = useRef(false)
+    const destroyHandler = useRef<void | (() => void)>()
     useEffect(() => {
-        if(!hasMount.current) handler()
+        if(!hasMount.current) destroyHandler.current = handler()
         hasMount.current = true
+        return destroyHandler.current
     }, [])
 }
 
