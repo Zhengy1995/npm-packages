@@ -1,6 +1,6 @@
 {
   "name": "@ronin-react/react-keep-alive",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "dist/es/index.js",
   "types": "dist/index.d.ts",
   "files": [

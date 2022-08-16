@@ -1,4 +1,5 @@
 import {
+  cloneElement,
   Component,
   createContext,
   createRef,
@@ -38,14 +39,20 @@ export const KeepScope = ({children}: PropsWithChildren<unknown>) => {
   const [allChildren, setAllChildren] = useState<Record<string, ReactNode>>({})
   const renderHandlers = useRef<Set<(domRef: RefObject<HTMLDivElement>) => void>>(new Set())
   const divRef = useRef<HTMLDivElement>(null)
+  const realIdRef = useRef<Record<string, string>>({})
   const contextValue = useMemo(
     () => ({
       render: (id: string, node: ReactNode) => {
         const flag =  !allChildren[id] || needToRefreshModule.has(id)
         if (flag) {
+          const realId = `${id}_${Math.random()}`
+          realIdRef.current[id] = realId
           setAllChildren({...allChildren, [id]: node})
         }
         return flag
+      },
+      getRealId(id: string) {
+        return realIdRef.current[id] ?? id
       },
       onRender(handler: (domRef: RefObject<HTMLDivElement>) => void) {
         renderHandlers.current.add(handler)
@@ -65,7 +72,7 @@ export const KeepScope = ({children}: PropsWithChildren<unknown>) => {
       <Suspense fallback={<></>}>
         <div className={style.hide} ref={divRef}>
           {Object.keys(allChildren).map(id => (
-            <div id={`cache_${id}`} key={id}>
+            <div id={`cache_${id}`} key={realIdRef.current[id]}>
               {allChildren[id]}
             </div>
           ))}
