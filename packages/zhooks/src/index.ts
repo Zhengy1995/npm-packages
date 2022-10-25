@@ -26,3 +26,14 @@ export const useEvent = <T extends Function>(handler: T) => {
         return fn.current(...args)
     }, []) as any) as T
 }
+
+export const useUpdateAfter = (handler: () => void, deps: any[]) => {
+    const firstRender = useRef(true)
+    useEffect(() => {
+        if(firstRender.current) {
+            firstRender.current = false
+            return
+        }
+        handler()
+    }, deps)
+}

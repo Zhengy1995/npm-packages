@@ -114,7 +114,7 @@ export class KeepAlive extends Component<PropsWithChildren<KeepAlivePropsT>> {
     } else {
       this.divRef.current?.append(...Array.from(document.querySelector(`#cache_${this.props.id}`)?.childNodes ?? []))
     }
-  }
+  } 
 
   componentWillUnmount() {
     document.getElementById(`cache_${this.props.id}`)?.append(...Array.from(this.divRef.current?.childNodes ?? []))

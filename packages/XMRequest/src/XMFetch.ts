@@ -100,15 +100,18 @@ class XMFetch<T> {
         .then(async res => {
           clearTimeout(timeId)
           if (res && (res.status < 200 || res.status >= 400)) {
-            const {detail} = await res.json()
-            throwReqOrResError(this.url, (this.param?.method as requestType) ?? 'GET', detail, false)
-            XMFetch.onError(detail, res, this)
-            this.reject(detail)
-            throw new Error(detail)
+            const result = await res.json()
+            throwReqOrResError(this.url, (this.param?.method as requestType) ?? 'GET', result, false)
+            XMFetch.onError(result, res, this)
+            this.reject(result)
+            throw new Error(JSON.stringify(result))
           }
           res = (await XMFetch.afterRequest(res, this)) ?? res
-          res
-            ?.json()
+
+          const headers = this.param?.headers
+          const isBlob = headers && 'Accept' in headers && headers['Accept'] === 'application/octet-stream'
+          const promise = isBlob ? res?.blob() : res?.json()
+          promise!
             .then(res => {
               this.reset()
               this.resolve(XMRequestPluginSets.emitResultHandler(res))

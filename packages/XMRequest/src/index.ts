@@ -41,7 +41,13 @@ export const _delete = <T>(url: string) => {
   }).result
 }
 
-export const get = <T>(url: string) => {
+export const get = <T>(url: string, param?: Record<string, any>) => {
+  if (param) {
+    url += '?'
+    Object.keys(param).forEach((k, i) => {
+      url += `${i !== 0 ? '&' : ''}${k}=${param[k]}`
+    })
+  }
   return new XMFetch<T>(url).result
 }
 
