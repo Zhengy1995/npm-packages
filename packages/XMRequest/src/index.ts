@@ -1,6 +1,8 @@
 import xmPluginSets, {XMRequestPluginT} from './plugin'
 import XMFetch from './XMFetch'
 
+export type IXMFetch = typeof XMFetch
+
 export interface IRequestPlugin {
   apply(sets: XMRequestPluginT): void
 }
