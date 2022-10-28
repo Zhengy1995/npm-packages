@@ -1,6 +1,6 @@
 {
   "name": "@ronin-public/request",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/es/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",

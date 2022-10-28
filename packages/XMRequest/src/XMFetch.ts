@@ -135,7 +135,7 @@ class XMFetch<T> {
   }
 
   public reFetch() {
-    return fetch(this.url, this.param)
+    return new XMFetch<T>(this.url, this.param, this.timeout, this.reconnectTimes).result
   }
 }
 
