@@ -80,6 +80,7 @@ class XMRequest {
   static delete = _delete
   static request = request
   static beforeRequest = beforeRequest
+  static afterRequest = afterRequest
   static onInterceptor = onInterceptor
   static onError = onError
   static setUnifiedRequestInit = setUnifiedRequestInit
