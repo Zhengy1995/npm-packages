@@ -65,7 +65,7 @@ class XMFetch<T> {
       this.resolve = resolve
       this.reject = reject
     }
-    if (this.times.times === 1 && !(await XMFetch.beforeRequest(this.url, this.param))) {
+    if (this.times.times === 0 && !(await XMFetch.beforeRequest(this.url, this.param))) {
       this.reject('This request is intercepted before request')
       this.promise.emitInterceptor()
       XMFetch.onInterceptor(this.url, this.param)
