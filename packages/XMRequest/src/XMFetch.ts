@@ -120,7 +120,7 @@ class XMFetch<T> {
               this.reset()
               throwReqOrResError(this.url, (this.param?.method as requestType) ?? 'GET', e, false)
               XMFetch.onError(e, res, this)
-              this.reject(res)
+              res && res.status >= 200 && res.status < 400 ? this.resolve(res as any) : this.reject(res)
             })
         })
     }
